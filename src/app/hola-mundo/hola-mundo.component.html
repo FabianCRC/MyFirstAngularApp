@@ -1,4 +1,98 @@
-<div class="hola-mundo">
+<div class="container">
+  <div class="hola-mundo container text-center">
     <h1>{{title}}</h1>
     <p>Hola Mundo</p>
+  </div>
+
+  <hr>
+  <div class="container">
+    <h1>CRUD(Local)</h1>
+    <br>
+    <form (submit)="addUser(newUser)">
+      <div class="row">
+        <div class="col-10">
+          <input type="text" class="form-control col-12" #newUser>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary  btn-block">Send User</button>
+        </div>
+      </div>
+    </form>
+  </div>
+<br>
+  <div class="container">
+    <h1>Lista:</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td> {{user}}</td>
+          <td><button class="btn btn-danger" (click)="deleteUser(user)">
+              X
+            </button></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <hr>
+  <br>
+
+  <div class="container">
+    <h1>Entradas dinamicas</h1>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="container col-sm">
+            <label for="">Name:</label>
+            <input type="text" class="form-control col" name="name" [(ngModel)]="name">
+          </div>
+          <div class="container col-sm">
+            <label for="">Age:</label>
+            <input type="text" class="form-control" name="age" [(ngModel)]="age">
+          </div>
+          <div class="container col-sm">
+            <div class="row">
+              <div class="col-sm"> <label for="">Name:</label>
+                <input type="text" value="{{name}}" disabled>
+              </div>
+              <div class="col-sm">
+                <label for="">Age:</label>
+                <input type="text" value="{{age}}" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <br>
+
+  <div class="container">
+    <h1>Consumiendo API</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let post of posts">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Title:{{post.title}}</h5>
+            <h6 class="card-title">Post ID:{{post.id}}</h6>
+            <p>User ID:{{post.userId}}</p>
+            <p>Post Body:{{post.body}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
